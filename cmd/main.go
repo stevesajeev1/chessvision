@@ -6,10 +6,14 @@ import (
 	"github.com/stevesajeev1/chessvision/internal"
 )
 
+
 func main() {
+	var images []*image.RGBA
+
 	for {
 		// Get screenshots
-		var images []*image.RGBA = internal.GetScreenshots()
+		images = images[:0]
+		internal.GetScreenshots(&images)
 
 		for _, image := range images {
 			// Detect if a chessboard is on screen
@@ -21,5 +25,6 @@ func main() {
 
 			// Display eval bar on screen
 		}
+		break
 	}
 }
